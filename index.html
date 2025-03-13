@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My E-commerce Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js"> <script src="script.js" defer></script>
+    <div class="welcome-section">
+        <p>WELCOME TO OUR STORE!</p>
+    </div>
+    <style>
+        .welcome-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('product pics.webp') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: slowZoom 10s ease-in-out forwards;
+}
+
+.welcome-section p {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    animation: zoomIn 0.5s ease-in-out;
+}
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+        }
+        .menu {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #333;
+            color: white;
+            transition: left 0.3s;
+            padding-top: 60px;
+        }
+        .menu a {
+            display: block;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
+        .menu a:hover {
+            background: #575757;
+        }
+        .menu .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .open-btn {
+            font-size: 20px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #333;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: top 0.3s;
+        }
+
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            top: 60px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff5722;
+        }
+
+        .main-content {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 80px;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px;
+            width: 220px;
+            text-align: center;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease-in-out forwards;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 3s ease-in-out;
+        }
+
+        .product:hover img {
+            transform: scale(1.1);
+        }
+   
+
+        button {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #e64a19;
+        }
+
+        .cart {
+            position: fixed;
+            top: 30px;
+            right: -300px;
+            background-color: #fff;
+            padding: 100px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100px;
+            transition: right 0.4s ease-in-out;
+        }
+
+        .cart.active {
+            right: 20px;
+        }
+
+        .cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cart li {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            z-index: 1000;
+        }
+        .whatsapp-logo {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s;
+        }
+        .whatsapp-button:hover .whatsapp-logo {
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .product {
+                width: 90%;
+            }
+            .cart {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="Dress logo Image 2025-03-04 at 07.36.38_262641f8.jpg" alt="Logo" style="height: 50px; width: 50px; vertical-align: middle; border-radius: 50%; overflow: hidden; border: 2px solid #333; box-shadow: 0 0 5px rgb(255, 255, 255);">
+
+        <h1 style="display: inline-block; margin-left: 10px; vertical-align: middle;">My Dress Store</h1>
+        <button class="open-btn" onclick="openMenu()">☰ Menu</button>
+        <button class="cart-icon" onclick="toggleCart()">🛒</button>
+        <div class="menu" id="menu">
+            <span class="close-btn" onclick="closeMenu()">&times;</span>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Product</a>
+            <a href="#">Contact</a>
+        </div>
+        <form class="search-bar">
+            <input type="text" placeholder="Search for products..." name="search">
+            <button type="submit">🔍</button>
+        </form>
+        
+        <script>
+            function openMenu() {
+                document.getElementById("menu").style.left = "0";
+            }
+            function closeMenu() {
+                document.getElementById("menu").style.left = "-250px";
+            }
+            function toggleCart() {
+                const cart = document.getElementById("cart");
+                cart.classList.toggle("active");
+            }
+        </script>
+    </header>
+   
+<div>
+    <img src="dresssss.webp" alt="Cover Image" style="width: 100%; height: auto; display: block;">
+    
+    
+
+    </div>
+    
+   
+   
+    <div class="main-content">
+        <div class="product">
+            <img src="produtct1.webp" alt="Product 1">
+            <h3>Elegant Dress</h3>
+            <p>$19.99</p>
+            <button onclick="addToCart('Elegant Dress', 19.99)">Add to Cart</button>
+            <button onclick="buyNow('Elegant Dress', 19.99)">Buy Now</button>
+        </div>
+
+        <div class="product">
+            <img src="product2.webp" alt="Product 2">
+            <h3>Party Gown</h3>
+            <p>$29.99</p>
+            <button onclick="addToCart('Party Gown', 29.99)">Add to Cart</button>
+            <button onclick="buyNow('Party Gown', 29.99)">Buy Now</button>
+        </div>
+        <div class="product">
+            <img src="product3.webp" alt="Product 3">
+            <h3>Velvet Dress</h3>
+            <p>$19.99</p>
+            <button onclick="addToCart('Elegant Dress', 19.99)">Add to Cart</button>
+            <button onclick="buyNow('Elegant Dress', 19.99)">Buy Now</button>
+        </div>
+
+        <div class="product">
+            <img src="produtct4.webp" alt="Product 4">
+            <h3>SemiFormals Dress</h3>
+            <p>$29.99</p>
+            <button onclick="addToCart('Party Gown', 29.99)">Add to Cart</button>
+            <button onclick="buyNow('Party Gown', 29.99)">Buy Now</button>
+        </div>
+       
+    </div>
+
+   
+    <video width="220" height="350" controls autoplay loop muted style="border-radius: 10px; box-shadow: 0 0 5px rgb(174, 11, 11);">
+        <source src="vidoe dress-1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video width="220" height="350" controls autoplay loop muted style="border-radius: 10px; box-shadow: 0 0 5px rgb(174, 11, 11);">
+        <source src="vidoe dress-2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video width="220" height="350" controls autoplay loop muted style="border-radius: 10px; box-shadow: 0 0 5px rgb(174, 11, 11);">
+        <source src="vidoe dress-3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video width="220" height="350" controls autoplay loop muted style="border-radius: 10px; box-shadow: 0 0 5px rgb(174, 11, 11);">
+        <source src="vidoe dress-4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="main-content">
+        <div class="product">
+            <img src="dress-1.webp" alt="Product 1">
+            <h3>Elegant Dress</h3>
+            <p>$19.99</p>
+            <button onclick="addToCart('Elegant Dress', 19.99)">Add to Cart</button>
+            <button onclick="buyNow('Elegant Dress', 19.99)">Buy Now</button>
+        </div>
+
+        <div class="product">
+            <img src="dress-2.webp" alt="Product 2">
+            <h3>Party Gown</h3>
+            <p>$29.99</p>
+            <button onclick="addToCart('Party Gown', 29.99)">Add to Cart</button>
+            <button onclick="buyNow('Party Gown', 29.99)">Buy Now</button>
+        </div>
+        <div class="product">
+            <img src="dress-3.webp" alt="Product 3">
+            <h3>Velvet Dress</h3>
+            <p>$19.99</p>
+            <button onclick="addToCart('Elegant Dress', 19.99)">Add to Cart</button>
+            <button onclick="buyNow('Elegant Dress', 19.99)">Buy Now</button>
+        </div>
+
+        <div class="product">
+            <img src="dress-4.webp" alt="Product 4">
+            <h3>SemiFormals Dress</h3>
+            <p>$29.99</p>
+            <button onclick="addToCart('Party Gown', 29.99)">Add to Cart</button>
+            <button onclick="buyNow('Party Gown', 29.99)">Buy Now</button>
+        </div>
+        <div class="cart" id="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="cart-total">0.00</span></p>
+        </div>
+    </div>
+
+    <video width="220" height="350" controls autoplay loop muted style="border-radius: 10px; box-shadow: 0 0 5px rgb(174, 11, 11);">
+        <source src="short-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video width="220" height="350" controls autoplay loop muted style="border-radius: 10px; box-shadow: 0 0 5px rgb(174, 11, 11);">
+        <source src="short-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video width="220" height="350" controls autoplay loop muted style="border-radius: 10px; box-shadow: 0 0 5px rgb(174, 11, 11);">
+        <source src="short-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video width="220" height="350" controls autoplay loop muted style="border-radius: 10px; box-shadow: 0 0 5px rgb(174, 11, 11);">
+        <source src="short-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="cart" id="cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+    </div>
+    
+
+    <footer class="footer">
+        <a href="https://wa.me/+923180556195" target="_blank" class="whatsapp-button">
+            <img src="WhatsApp.svg.jpg" alt="WhatsApp" class="whatsapp-logo">
+        </a>
+        <p>&copy; 2024 My Dress Store</p>
+        
+
+    </footer>
+    <h3>Scan to Pay</h3>
+    <p>Scan the QR code below to pay using your Visa card:</p>
+    <img src="visa card.jpg" alt="Visa Card Scanner" style="width: 120px; margin: 10px; border: 2px solid #333; border-radius: 10px;">
+    <img src="master card.png" alt="Visa Card Scanner" style="width: 150px; margin: 10px; border: 2px solid #333; border-radius: 10px;">
+    <button style="display: block; margin: 20px auto; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background 0.3s ease;" onclick="window.location.href='payment.html'">Proceed to Payment</button>
+    <section class="return-policy">
+        <h2>Return Policy</h2>
+        <p>We offer a hassle-free return policy. If you are not satisfied with your purchase, you can return the item within <strong>30 days</strong> of delivery.</p>
+        <ul>
+            <li>Items must be unused and in their original packaging.</li>
+            <li>Refunds will be processed within 7 business days.</li>
+            <li>Customer is responsible for return shipping costs unless the item is defective or incorrect.</li>
+            <li>Sale or clearance items are non-returnable.</li>
+        </ul>
+        <p>For returns, please contact our support team at <a href="mailto:support@example.com">support@example.com</a>.</p>
+    </section>
+    
+</div>
+</body>
+</html>
